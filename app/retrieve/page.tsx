@@ -48,7 +48,7 @@ const Retrieve = () => {
   };
 
   return (
-    <div className="flex justify-center bg-black w-screen">
+    <div className="flex justify-center bg-black w-screen pt-20">
       <Card className="p-6 max-w-[70vw]">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
