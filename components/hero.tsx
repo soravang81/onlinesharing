@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Vortex } from "./ui/vortex"
 
 const Hero = () => {
-    return <div className="w-full mx-auto self-center rounded-md h-[80vh] overflow-hidden">
+    return <div className="w-full mx-auto self-center rounded-md h-[87vh] overflow-hidden">
     <Vortex
       backgroundColor="black"
       className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
