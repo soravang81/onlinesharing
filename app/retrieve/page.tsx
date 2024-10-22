@@ -33,9 +33,8 @@ const Retrieve = () => {
     if (fileUrl) {
       const link = document.createElement('a');
       link.href = fileUrl;
-      document.body.appendChild(link);
+      link.download = fileUrl;
       link.click();
-      document.body.removeChild(link);
     }
   };
 
