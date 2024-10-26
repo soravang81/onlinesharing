@@ -15,10 +15,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-const EXPIRATION_TIME = 2 * 60 * 1000; // 30 minutes in milliseconds
+const EXPIRATION_TIME = 30 * 60 * 1000; // 30 minutes
 const CLEANUP_INTERVAL = 15 * 60 * 1000; // Run cleanup every 15 minutes
 
-// Cleanup function to delete expired files
 export const cleanupExpiredFiles = async () => {
   try {
     const storageRef = ref(bucket);
@@ -46,11 +45,9 @@ export const cleanupExpiredFiles = async () => {
 }
 
 // Start periodic cleanup
-if (typeof window !== 'undefined') {  // Only run in browser environment
-  // Initial cleanup
+if (typeof window !== 'undefined') {
   cleanupExpiredFiles();
   
-  // Set up periodic cleanup
   setInterval(cleanupExpiredFiles, CLEANUP_INTERVAL);
 }
 
@@ -60,7 +57,6 @@ export async function uploadImageAndGetCode(file: File) {
     const code = await getCode();
     const storageRef = ref(bucket, `${code}`);
 
-    // Add metadata to the file
     const metadata = {
       customMetadata: {
         uploadTime: Date.now().toString(),
@@ -72,7 +68,6 @@ export async function uploadImageAndGetCode(file: File) {
     const downloadURL = await getDownloadURL(snapshot.ref);
     console.log("Download URL:", downloadURL);
 
-    // Schedule individual file deletion
     setTimeout(async () => {
       try {
         await deleteObject(storageRef);
@@ -99,7 +94,6 @@ export const getImage = async (code: string) => {
   try {
     const url = await getUrlFromCode(code);
     
-    // Check if the file has expired
     const storageRef = ref(bucket, code);
     try {
       const metadata = await getMetadata(storageRef);

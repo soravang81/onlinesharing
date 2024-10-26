@@ -26,17 +26,25 @@ export const deleteFromDb = async (code: string) => {
 
 }
 
-export async function getUrlFromCode(code: string) {
-  const store = await prisma.store.findFirst({
-    where: {
-      code,
-    },
-  })
+export async function getUrlFromCode(code: string): Promise<string | null> {
+  try {
+    const store = await prisma.store.findFirst({
+      where: {
+        code,
+      },
+    })
 
-  return store?.value
+    if (!store) {
+      return null
+    }
+
+    return store.value
+  } catch (error) {
+    console.error(error)
+    return null
+  }
 }
 
-// Save text and get generated code
 export const saveTextAndGetCode = async (text: string) => {
   const code = Math.random().toString(36).substr(2, 5);
   await addCodeWithExpiration(code, text);
