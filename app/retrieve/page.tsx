@@ -18,10 +18,11 @@ const Retrieve = () => {
         console.log('Code not found');
         return;
       }
-      setFileUrl(url);
       console.log(fileUrl)
       if (!url?.startsWith('https')) {
         setTextContent(url);
+      } else {
+        setFileUrl(url);
       }
       console.log(textContent)
     } catch (error) {
