@@ -5,7 +5,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { Download, MenuIcon, Share } from "lucide-react";
 
 const Navbar = () => {
-    return <><div className=" w-full flex items-center z-10 justify-between xl:px-60 lg:px-40 md:px-20 sm:px-8 px-2 py-2 sticky top-0 bg-black text-background">
+    return <><div className=" w-full flex items-center z-20 justify-between xl:px-60 lg:px-40 md:px-20 sm:px-8 px-2 py-2 sticky top-0 bg-black text-background">
         <div className="flex items-center gap-2">
             <div className="overflow-hidden w-10 h-10 rounded-full">
                 <img src="/onlinesharing.io.avif" alt="Logo" className="w-full h-full object-cover scale-150" />
