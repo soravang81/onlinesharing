@@ -65,7 +65,7 @@ export default function Share() {
   return (
     <div className="bg-black min-h-screen w-full text-white overflow-hidden relative">
       <ShootingStars />
-      <div className="container mx-auto px-4 py-12 relative z-10">
+      <div className="container mx-auto px-4 pt-20 relative z-10">
         <header className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-white">
             Cosmic Share
