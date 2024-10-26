@@ -15,6 +15,7 @@ import { saveTextAndGetCode } from "@/lib/action"
 
 export default function Share() {
   const [file, setFile] = useState<File | null>(null)
+  const [note, setNote] = useState<string | null>(null)
   const [text, setText] = useState("")
   const [isSharing, setIsSharing] = useState(false)
   const [shareResult, setShareResult] = useState("")
@@ -34,6 +35,7 @@ export default function Share() {
     setIsSharing(true)
     try {
       const result = await uploadImageAndGetCode(file!)
+      setNote("Please be notified that the code will expire in 30 minutes.")
       setShareResult(result)
       setFile(null)
     } catch (error) {
@@ -78,8 +80,8 @@ export default function Share() {
         <div className="max-w-2xl mx-auto bg-slate-950 p-8 rounded-lg shadow-2xl text-white">
           <Tabs defaultValue="file" className="w-full">
             <TabsList className="grid w-full grid-cols-2 mb-8 bg-slate-900 text-white">
-              <TabsTrigger value="file">File</TabsTrigger>
-              <TabsTrigger value="text">Text</TabsTrigger>
+              <TabsTrigger onClick={() => setShareResult("")} value="file">File</TabsTrigger>
+              <TabsTrigger onClick={() => setShareResult("")} value="text">Text</TabsTrigger>
             </TabsList>
             <TabsContent value="file">
               <div className="space-y-4">
@@ -156,7 +158,9 @@ export default function Share() {
               <Label className="block text-sm font-medium text-gray-700 mb-2">
                 Your Cosmic Code
               </Label>
-              <div className="flex mt-2">
+              <div className="flex flex-col mt-2">
+                {note && <p className="text-red-500">{note}</p>}
+                <div className="flex ">
                 <Input
                   value={shareResult}
                   readOnly
@@ -165,6 +169,7 @@ export default function Share() {
                 <Button onClick={handleCopy} className="ml-2 bg-black text-white hover:bg-gray-800">
                   {isCopied ? <CheckCircle2 className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                 </Button>
+                </div>
               </div>
             </div>
           )}
