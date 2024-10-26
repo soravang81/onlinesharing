@@ -21,7 +21,7 @@ const Navbar = () => {
                 <DropdownMenuTrigger asChild className="">
                     <MenuIcon size={30} className="text-white rounded-lg"/>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56 self-start flex flex-col">
+                <DropdownMenuContent className="w-56 z-21 self-start flex flex-col">
                 <DropdownMenuItem className="p-0 " 
                 >
                     <Link href="/share" className="flex items-center gap-2 p-2">
