@@ -105,6 +105,7 @@ export const getImage = async (code: string) => {
       
       return url;
     } catch (error) {
+      console.error("Error getting metadata:", error);
       throw new Error("File not found or has expired");
     }
   } catch (error) {
