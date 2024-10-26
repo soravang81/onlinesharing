@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { ShootingStars } from "@/components/ui/shooting-stars"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Label } from "@/components/ui/label"
-import {  uploadImageAndGetCOde } from "@/lib/utils"
+import { uploadImageAndGetCode } from "@/lib/utils"
 import { saveTextAndGetCode } from "@/lib/action"
 
 
@@ -33,7 +33,7 @@ export default function Share() {
   const handleFileShare = async () => {
     setIsSharing(true)
     try {
-      const result = await uploadImageAndGetCOde(file!)
+      const result = await uploadImageAndGetCode(file!)
       setShareResult(result)
       setFile(null)
     } catch (error) {

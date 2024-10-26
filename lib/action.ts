@@ -2,12 +2,28 @@
 import prisma from "@/db/db";
 
 export async function addCodeWithExpiration(code: string, imageUrl: string) {
-    await prisma.store.create({
+    try {
+      await prisma.store.create({
         data: {
             code,
             value: imageUrl,
         },
-    })
+      })
+    } catch (error) {
+        console.error(error)
+    }
+}
+export const deleteFromDb = async (code: string) => {
+    try {
+        await prisma.store.delete({
+            where: {
+                code
+            }
+        })
+    } catch (error) {
+        console.error(error)
+    }
+
 }
 
 export async function getUrlFromCode(code: string) {

@@ -9,6 +9,7 @@ const Retrieve = () => {
   const [code, setCode] = useState("");
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [textContent, setTextContent] = useState<string | null>(null);
 
   const downloadAndShowFile = async () => {
@@ -16,9 +17,10 @@ const Retrieve = () => {
       const url = await getUrlFromCode(code);
       if (!url) {
         console.log('Code not found');
+        setError("The code you entered is not valid or has expired.");
         return;
       }
-      console.log(fileUrl)
+      // console.log(fileUrl)
       if (!url?.startsWith('https')) {
         setTextContent(url);
       } else {
@@ -53,12 +55,17 @@ const Retrieve = () => {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <p className="text-lg font-semibold">Enter the code</p>
+            {error && <p className="text-red-500">{error}</p>}
             <section className="flex gap-4">
               <Input 
                 className="text-lg font-semibold border border-input rounded-md p-2"
                 type="text"
                 value={code}
-                onChange={(e) => setCode(e.target.value)}
+                onClick={() => setError(null)}
+                onChange={(e) =>{
+                  setCode(e.target.value);
+                  setError(null);
+                }}
               />
               <Button onClick={downloadAndShowFile}>
                 Retrieve
