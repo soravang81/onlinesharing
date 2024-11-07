@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Label } from "@/components/ui/label"
 import { uploadImageAndGetCode } from "@/lib/utils"
 import { saveTextAndGetCode } from "@/lib/action"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 
 
@@ -65,9 +66,10 @@ export default function Share() {
   }
 
   return (
-    <div className="bg-black min-h-screen w-full text-white overflow-hidden relative">
-      <ShootingStars />
-      <div className="container mx-auto px-4 pt-20 relative z-10">
+    <ScrollArea className="h-[89vh]">
+    <div className="bg-black h-full w-screen text-white">
+      {/* <ShootingStars /> */}
+      <div className="container mx-auto px-4 pt-20 relative">
         <header className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-white">
             Cosmic Share
@@ -150,9 +152,6 @@ export default function Share() {
             </Button>
             </TabsContent>
           </Tabs>
-
-
-
           {shareResult && (
             <div className="mt-8 p-4 bg-gray-100 rounded-md">
               <Label className="block text-sm font-medium text-gray-700 mb-2">
@@ -176,5 +175,6 @@ export default function Share() {
         </div>
       </div>
     </div>
+    </ScrollArea>
   )
 }

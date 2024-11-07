@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { getUrlFromCode } from "@/lib/action";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Retrieve = () => {
   const [code, setCode] = useState("");
@@ -50,8 +51,9 @@ const Retrieve = () => {
   };
 
   return (
-    <div className="flex justify-center bg-black w-screen pt-20">
-      <Card className="p-6 max-w-[70vw]">
+    <ScrollArea className="h-[89vh]">
+    <div className="flex justify-center bg-black w-full pt-20">
+      <Card className="p-6 max-w-[70vw] h-fit">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <p className="text-lg font-semibold">Enter the code</p>
@@ -95,6 +97,7 @@ const Retrieve = () => {
         </div>
       </Card>
     </div>
+    </ScrollArea>
   );
 };
 

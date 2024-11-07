@@ -5,12 +5,12 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { Download, MenuIcon, Share } from "lucide-react";
 
 const Navbar = () => {
-    return <><div className=" w-full flex items-center z-20 justify-between xl:px-60 lg:px-40 md:px-20 sm:px-8 px-2 py-2 sticky top-0 bg-black text-background">
+    return <><div className="z-20 w-full flex items-center justify-between xl:px-60 lg:px-40 md:px-20 sm:px-8 px-2 py-2  bg-black text-background">
         <div className="flex items-center gap-2">
             <div className="overflow-hidden w-10 h-10 rounded-full">
                 <img src="/onlinesharing.io.avif" alt="Logo" className="w-full h-full object-cover scale-150" />
             </div>
-            <Link href={"/"} className="text-2xl font-bold hover:cursor-pointer font-sans">Online-Sharing.io</Link>
+            <Link href={"/"} className="text-2xl font-bold hover:cursor-pointer font-sans">OnlineSharing.io</Link>
         </div>
         <section className="sm:block hidden">
             <Button onClick={()=>window.location.href = "/share"} variant={"ghost"}>Share</Button>
